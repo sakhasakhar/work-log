@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align=center>Works log</h1>
+{% for item in news%}
+  <h2>Action #{{ item.id }}</h2>
+  <table border="1">
+   <thead>
+     <tr>
+       <th>Title of activity</th>
+       <th>Team leader</th>
+       <th>Duration</th>
+       <th>List of collabolators</th>
+       <th>Is finished</th>
+     </tr>
+   </thead>
+   <tr><td>{{ item.job }}</td><td>{{ item.tl.surname }} {{ item.tl.name }}</td><td>{{ item.work_size }} hours</td><td>{{ item.collaborators }}</td><td>
+{% if item.is_finished == True %} is finished
+{% else %} is not finished
+{% endif %}</td></tr>
+  </table>
+  <br>
+{% endfor %}
+{% endblock %}
